@@ -1,12 +1,12 @@
 {
-  "name": "webhook-echo-sample",
+  "name": "countryInfo-sample",
   "version": "1.0.0",
-  "description": "Webhook echo sample",
+  "description": "Webhook countryInfo sample",
   "main": "index.js",
   "scripts": {
     "start": "node index.js"
   },
-  "author": "Sunil Syal",
+  "author": "Rounak Kulkarni",
   "dependencies": {
     "body-parser": "^1.15.0",
     "express": "^4.13.4"

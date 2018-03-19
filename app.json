@@ -1,6 +1,6 @@
 {
-  "name": "Webhook-echo-sample",
-  "description": "Webhook echo sample",
-  "repository": "https://github.com/SunilSyal/Webhook-and-API.AI-Samples.git",
+  "name": "countryInfo-sample",
+  "description": "Webhook countryInfo sample",
+  "repository": "https://github.com/rkrockstar/countryInfo",
   "keywords": ["api.ai", "dialogflow", "natural language"]
 }
