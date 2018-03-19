@@ -14,23 +14,23 @@ restService.use(
 restService.use(bodyParser.json());
 
 
-restService.post('/countryInfo', function(req, res) {
+//restService.post('/countryInfo', function(req, res) {
  //var speech = req.params.countryName
  app.post('https://restcountries.eu/rest/v2/name', function(req, res) {
 
-  var countryDetail = req.param('countryName');
+  var speech = req.param('countryName');
    //countryDetail.countryName = req.params.countryName;
     
 
-  res.send(countryDetail); // send json response
+  res.send(speech); // send json response
     return res.json({
-    speech: countryDetail,
-   displayText: countryDetail,
+    speech: speech,
+   displayText: speech,
     source: "countryInfo-sample"
   });
 });
     
-});
+
 	  
  
 	
