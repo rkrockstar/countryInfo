@@ -13,14 +13,9 @@ restService.use(
 
 restService.use(bodyParser.json());
 
-//var options = {
- // host: 'https://restcountries.eu/rest/v2/name',
- // port: 443,
- // path: '/{countryName}',
- // method: 'POST'
-//};
 
-app.post('https://restcountries.eu/rest/v2/name/countryName', function(req, res) {
+
+app.post('https://restcountries.eu/rest/v2/name/{countryName}', function(req, res) {
 
     var countryDetail = {}
 
@@ -36,6 +31,16 @@ app.post('https://restcountries.eu/rest/v2/name/countryName', function(req, res)
 });
 
 app.listen(443);
+
+
+
+//var options = {
+ // host: 'https://restcountries.eu/rest/v2/name',
+ // port: 443,
+ // path: '/{countryName}',
+ // method: 'POST'
+//};
+
 
 //restService.post(options, function(req, res) {
  // var speech =
