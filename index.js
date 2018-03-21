@@ -15,9 +15,9 @@ app.post('/', function(req, res) {
     if(req.body.result.parameters.text == "organisation"){
         request.get({
               url: 'https://restcountries.eu/rest/v2/name/canada';
-   //           headers: {
-    //            'Authorization': 'Token'
-      //        }
+              headers: {
+                'Authorization': 'Token'
+              }
             }, function(error, response, body) {
                 var info = JSON.parse(body);
                 console.log(info);
