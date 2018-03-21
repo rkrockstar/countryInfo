@@ -1,67 +1,44 @@
-"use strict";
+'use strict';
 
-const express = require("express");
-const bodyParser = require("body-parser");
+const express = require('express');
+const bodyParser = require('body-parser');
+var request = require('request');
+const app = express();
 
-const restService = express();
-
-restService.use(
-  bodyParser.urlencoded({
+app.use(bodyParser.urlencoded({
     extended: true
-  })
-);
+}));
 
-restService.use(bodyParser.json());
+app.use(bodyParser.json());
 
-
-//restService.post('/countryInfo', function(req, res) {
- //var speech = req.params.countryName
- app.post('https://restcountries.eu/rest/v2/name', function(req, res) {
-
-  var speech = req.param('countryName');
-   //countryDetail.countryName = req.params.countryName;
+app.post('/', function(req, res) {
+    if(req.body.result.parameters.text == "organisation"){
+        request.get({
+              url: 'https://restcountries.eu/rest/v2/name/canada',
+   //           headers: {
+    //            'Authorization': 'Token'
+      //        }
+            }, function(error, response, body) {
+                var info = JSON.parse(body);
+                console.log(info);
+                var resp = "Country Info :" + info[0].name;
+                resp += ",Capital is : " +  info[0].capital;
+                resp += ",Population is : " +  info[0].population;
+                //var reqy = req.body.result && req.body.result.parameters && req.body.result.parameters.echoText ? req.body.result.parameters.echoText : "Seems like some problem. Speak again."
+                res.json({
+                    speech: resp,
+                    displayText: resp,
+                    source: 'webhook'
+            });
+        });
+    }
     
-
-  res.send(speech); // send json response
-    return res.json({
-    speech: speech,
-   displayText: speech,
-    source: "countryInfo-sample"
-  });
 });
-    
 
-	  
- 
-	
-  //return res.json({
-//    speech: speech,
-  //  displayText: speech,
-//    source: "webhook-echo-sample"
-//  });
-//});
-    
-    //var options = {
- // host: 'https://restcountries.eu/rest/v2/name',
- // port: 443,
- // path: '/{countryName}',
- // method: 'POST'
-//};
 
-//app.post('https://restcountries.eu/rest/v2/name/{countryName}', function(req, res) {
 
- //   var countryDetail = {}
+app.listen((process.env.PORT || 8000), function() {
+    console.log("Server up and listening");
+});
 
-//   countryDetail.countryName = req.params.countryName;
-    
-
-  //  res.send(countryDetail); // send json response
- //    return res.json({
- //   speech: countryDetail,
- //   displayText: countryDetail,
- //   source: "countryInfo-sample"
- // });
-//});
-
-//app.listen(443);
 
