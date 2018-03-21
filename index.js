@@ -14,16 +14,16 @@ app.use(bodyParser.json());
 app.post('/', function(req, res) {
     if(req.body.result.parameters.text == "organisation"){
         request.get({
-              url: 'https://restcountries.eu/rest/v2/name/canada'
+              url: 'https://restcountries.eu/rest/v2/name/canada';
    //           headers: {
     //            'Authorization': 'Token'
       //        }
             }, function(error, response, body) {
                 var info = JSON.parse(body);
                 console.log(info);
-                var resp = "Country Info :" + info[0].name;
-                resp += ",Capital is : " +  info[0].capital;
-                resp += ",Population is : " +  info[0].population;
+                var resp = "Country Info :" + info.name;
+                resp += ",Capital is : " +  info.capital;
+                resp += ",Population is : " +  info.population;
                 //var reqy = req.body.result && req.body.result.parameters && req.body.result.parameters.echoText ? req.body.result.parameters.echoText : "Seems like some problem. Speak again."
                 res.json({
                     speech: resp,
