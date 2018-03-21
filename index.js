@@ -12,9 +12,9 @@ app.use(bodyParser.urlencoded({
 app.use(bodyParser.json());
 
 app.post('/country', function(req, res) {
-    if(req.body.result.parameters.text == "country"){
+    if(req.body.result.parameters.Country == "country"){
         request.get({
-              url: 'https://restcountries.eu/rest/v2/name/{country}';
+              url: 'https://restcountries.eu/rest/v2/name/{country}'
               //headers: {
             //    'Authorization': 'Token'
             //  }
@@ -31,7 +31,6 @@ app.post('/country', function(req, res) {
                     source: 'countryInfo-sample'
             });
         });
-    }
     
 });
 
